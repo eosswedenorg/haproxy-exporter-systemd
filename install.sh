@@ -5,8 +5,10 @@ VERSION=0.9.0
 INSTALLDIR=/usr/local/bin
 CONFIGDIR=/etc/prometheus
 
+SRC_URL=https://github.com/prometheus/haproxy_exporter/releases/download/v${VERSION}/haproxy_exporter-${VERSION}.linux-${ARCH}.tar.gz
+
 # Download and install the binary.
-wget -O- https://github.com/prometheus/haproxy_exporter/releases/download/v${VERSION}/haproxy_exporter-${VERSION}.linux-${ARCH}.tar.gz | tar zxf -
+wget -q --show-progress -O- ${SRC_URL} | tar zxf -
 sudo mv haproxy_exporter-${VERSION}.linux-${ARCH}/haproxy_exporter ${INSTALLDIR}/haproxy_exporter-${VERSION}
 
 # Create User/Group
